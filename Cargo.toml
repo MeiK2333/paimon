@@ -9,6 +9,8 @@ edition = "2018"
 [dependencies]
 ctor = "0.1.16"
 libc = "0.2"
+libloading = "0.6"
+lazy_static = "1.4.0"
 
 [lib]
 name = "paimon"
