@@ -7,5 +7,6 @@ fn main() {
         .file("external/xhook/xh_util.c")
         .file("external/xhook/xh_version.c")
         .file("external/xhook/xhook.c")
+        .file("src/c/utils.cc")
         .compile("xhook");
 }

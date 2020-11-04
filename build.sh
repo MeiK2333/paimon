@@ -1,4 +1,8 @@
-cargo ndk --platform 21 --target i686-linux-android build --release
+compiled=$(cargo ndk --platform 21 --target i686-linux-android build --release)
+if [ $? != 0 ]; then
+    echo "compile error"
+    exit 1
+fi
 adb root
 sleep 2
 adb remount
