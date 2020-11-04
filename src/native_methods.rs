@@ -1,12 +1,14 @@
 use crate::utils::string_from_c_buf;
 use crate::{nativeForkAndSpecialize, nativeForkAndSpecialize_p};
-use jni::sys::{jboolean, jclass, jint, jintArray, jobjectArray, jstring, JNIEnv, JNINativeMethod};
+use jni::objects::JClass;
+use jni::sys::{jboolean, jint, jintArray, jobjectArray, jstring, JNINativeMethod};
+use jni::JNIEnv;
 use libc::c_void;
 
 #[no_mangle]
 pub extern "system" fn new_native_fork_and_specialize(
-    env: *const JNIEnv,
-    clazz: jclass,
+    env: JNIEnv,
+    clazz: JClass,
     uid: jint,
     gid: jint,
     gids: jintArray,

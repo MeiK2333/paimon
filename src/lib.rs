@@ -8,7 +8,9 @@ extern crate libc;
 mod native_methods;
 mod utils;
 
-use jni::sys::{jboolean, jclass, jint, jintArray, jobjectArray, jstring, JNIEnv, JNINativeMethod};
+use jni::objects::JClass;
+use jni::sys::{jboolean, jint, jintArray, jobjectArray, jstring, JNINativeMethod};
+use jni::JNIEnv;
 use libc::c_void;
 use native_methods::native_fork_and_specialize_hook;
 use std::ffi::CString;
@@ -39,8 +41,8 @@ extern "C" {
     static mut jniRegisterNativeMethods:
         *const extern "C" fn(*const JNIEnv, *const c_char, *const JNINativeMethod, i32) -> i32;
     fn nativeForkAndSpecialize_p(
-        env: *const JNIEnv,
-        clazz: jclass,
+        env: JNIEnv,
+        clazz: JClass,
         uid: jint,
         gid: jint,
         gids: jintArray,
